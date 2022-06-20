@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:8.0.29
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: python
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: gamesys
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+
+  adminer:
+    image: adminer
+    container_name: adminer_container
+    restart: always
+    ports:
+      - 8080:8080
+
+  app:
+    build: .
+    depends_on:
+      - mysql
+    ports:
+      - "5000:5000"

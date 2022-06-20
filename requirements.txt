@@ -1,0 +1,5 @@
+python-dotenv==0.20.0
+PyMySQL==1.0.2
+cryptography==37.0.2
+Flask_RESTful==0.3.9
+flask-mysql==1.5.2
